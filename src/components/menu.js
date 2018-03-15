@@ -25,9 +25,9 @@ function createPeriod(periods) {
 }
 
 const menu = `
-    <ul>
-        <li>${createCategories(categories)}</li>
-        <li>${createAuthors(authors)}</li>
-        <li>${createPeriod(period)}</li>
+    <ul class="row">
+        <li class="col-4 col-sm-12">${createCategories(categories)}</li>
+        <li class="col-4 col-sm-12">${createAuthors(authors)}</li>
+        <li class="col-4 col-sm-12">${createPeriod(period)}</li>
     </ul>
 `;
