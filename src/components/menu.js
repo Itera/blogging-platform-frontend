@@ -1,42 +1,33 @@
-const categories = `
+function createCategories(categories) {
+    return `
     <h3>📚&nbsp;Category</h3>
     <div class="categories">
-        <div class="category">Technology</div>
-        <div class="category">Science</div>    
-        <div class="category">Arts</div>    
-        <div class="category">Music</div>    
-        <div class="category">Cinema</div>    
-        <div class="category">Economy</div>    
+        ${categories.map(category => "<div class=\"category\">" + category + "</div>").reduce(merge)} 
     </div>
-`;
+    `;
+}
 
-const authors = `
+function createAuthors(authors) {
+    return `
     <h3>🤷&nbsp;Author</h3>
     <div class="authors">
-        <div class="author">Ross Geller</div>
-        <div class="author">Monica Geller Bing</div>    
-        <div class="author">Phoebe Buffet</div>    
-        <div class="author">Chandler Bing</div>    
-        <div class="author">Rachel Green</div>    
-        <div class="author">Joey Tribiani</div>    
+        ${authors.map(author => "<div class=\"author\">" + author + "</div>").reduce(merge)} 
     </div>
-`;
+    `;
+}
 
-const period = `
+function createPeriod(periods) {
+    return `
     <h3>⏲&nbsp;Period</h3>
     <div class="period">
-        <div class="period-year">2018</div>
-        <div class="period-month">March</div>
-        <div class="period-month">February</div>
-        <div class="period-month">January</div>
-        <div class="period-year">2017</div>    
-    </div>
-`;
+        ${periods.map(period => "<div class=\"" + period.className + "\">" + period.value + "</div>").reduce(merge)}
+    </div>`;
+}
 
 const menu = `
     <ul>
-        <li>${categories}</li>
-        <li>${authors}</li>
-        <li>${period}</li>
+        <li>${createCategories(categories)}</li>
+        <li>${createAuthors(authors)}</li>
+        <li>${createPeriod(period)}</li>
     </ul>
 `;
