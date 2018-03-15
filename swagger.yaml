@@ -20,6 +20,19 @@ schemes:
 - "http"
 paths:
   /post:
+    get:
+      tags:
+      - "post"
+      summary: "Get list of all posts"
+      description: "Unfiltered list of all posts"
+      operationId: "getPosts"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "List of all posts"
+          schema:
+            $ref: "#/definitions/Post"
     post:
       tags:
       - "post"
@@ -283,6 +296,20 @@ paths:
         404:
           description: "No categories found"
   /author:
+    get:
+      tags:
+      - "author"
+      summary: "List all authors"
+      operationId: "getAuthors"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        404:
+          description: "No authors found"
     post:
       tags:
       - "author"

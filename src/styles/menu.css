@@ -1,0 +1,31 @@
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li h3 {
+    font-size: 1.5em;
+}
+
+.menu ul li > div {
+    margin-bottom: 1.5em;
+}
+
+.menu ul li .authors .author {
+    margin-bottom: 0.1em;
+    border-bottom: 1px dashed lightgray;
+}
+
+.menu ul li .categories .category {
+    display: inline-block;
+    border: 1px solid lightgray;
+    background-color: lightgray;
+    margin: 0.2em;
+    padding: 0.2em;
+    border-radius: 0.5em;
+}
+
+.menu ul li .period .period-month {
+    margin-left: 1em;
+    text-decoration: underline dashed lightgray;
+}

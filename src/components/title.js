@@ -1,0 +1,1 @@
+const title = `<h1>Friends blog!</h1>`;

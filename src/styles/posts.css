@@ -1,0 +1,21 @@
+.post-details {
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}
+
+.post-details div {
+    display: inline-block;
+}
+
+.post-details .post-author {
+    font-weight: bolder;
+}
+
+.post-details .post-date {
+    font-style: italic;
+}
+
+.post-details .post-comments {
+    color: grey;
+    text-decoration: underline;
+}
