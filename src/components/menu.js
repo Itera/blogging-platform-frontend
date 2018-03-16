@@ -1,4 +1,6 @@
-function createCategories(categories) {
+import {merge} from '../utils/collection-helpers';
+
+export function createCategories(categories) {
     return `
     <h3>📚&nbsp;Category</h3>
     <div class="categories">
@@ -7,7 +9,7 @@ function createCategories(categories) {
     `;
 }
 
-function createAuthors(authors) {
+export function createAuthors(authors) {
     return `
     <h3>🤷&nbsp;Author</h3>
     <div class="authors">
@@ -16,18 +18,10 @@ function createAuthors(authors) {
     `;
 }
 
-function createPeriod(periods) {
+export function createPeriod(periods) {
     return `
     <h3>⏲&nbsp;Period</h3>
     <div class="period">
         ${periods.map(period => "<div class=\"" + period.className + "\">" + period.value + "</div>").reduce(merge)}
     </div>`;
 }
-
-const menu = `
-    <ul class="row">
-        <li class="col-4 col-sm-12">${createCategories(categories)}</li>
-        <li class="col-4 col-sm-12">${createAuthors(authors)}</li>
-        <li class="col-4 col-sm-12">${createPeriod(period)}</li>
-    </ul>
-`;

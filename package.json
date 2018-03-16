@@ -1,0 +1,35 @@
+{
+  "name": "blogging-platform-frontend",
+  "version": "1.0.0",
+  "description": "The simplest UI you can imagine",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch index.js target/build.js",
+    "build": "webpack index.js target/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.intra.itera.no:pavol.rajzak/blogging-platform-frontend.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Pavol Rajzak",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-react-displayname": "0.0.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.9",
+    "style-loader": "^0.20.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-cleanup-plugin": "^0.5.1"
+  }
+}

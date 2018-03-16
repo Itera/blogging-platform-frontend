@@ -1,4 +1,6 @@
-function createPostList(posts) {
+import {merge} from '../utils/collection-helpers';
+
+export function createPostList(posts) {
     return posts.map(post => (`
         <div class="post">
             <h2>${post.title}</h2>
@@ -14,5 +16,3 @@ function createPostList(posts) {
         </div>
     `)).reduce(merge);
 }
-
-const postsList = createPostList(fakePosts);

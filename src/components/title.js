@@ -1,1 +1,1 @@
-const title = `<h1>👨‍👨‍👦‍👦 Friends blog 🌟</h1>`;
+export const title = `<h1>👨‍👨‍👦‍👦 Friends blog 🌟</h1>`;
