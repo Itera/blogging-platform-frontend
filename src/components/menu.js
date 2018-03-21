@@ -1,27 +1,38 @@
-import merge from '../utils/collection-helpers';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export function createCategories(categories) {
-    return `
-    <h3>📚&nbsp;Category</h3>
-    <div class="categories">
-        ${categories.map(category => "<div class=\"category\">" + category + "</div>").reduce(merge)} 
-    </div>
-    `;
-}
+export const Categories = ({categories}) => (
+    <div>
+        <h3>📚&nbsp;Category</h3>
+        <div className="categories">
+            {categories.map(category => <div key={category} className="category">{category}</div>)}
+        </div>
+    </div>);
 
-export function createAuthors(authors) {
-    return `
-    <h3>🤷&nbsp;Author</h3>
-    <div class="authors">
-        ${authors.map(author => "<div class=\"author\">" + author + "</div>").reduce(merge)} 
-    </div>
-    `;
-}
+Categories.propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.string)
+};
 
-export function createPeriod(periods) {
-    return `
-    <h3>⏲&nbsp;Period</h3>
-    <div class="period">
-        ${periods.map(period => "<div class=\"" + period.className + "\">" + period.value + "</div>").reduce(merge)}
-    </div>`;
-}
+export const Authors = ({authors}) => (
+    <div>
+        <h3>🤷&nbsp;Author</h3>
+        <div className="authors">
+            {authors.map(author => <div key={author} className="author">{author}</div>)}
+        </div>
+    </div>);
+
+Authors.propTypes = {
+    authors: PropTypes.arrayOf(PropTypes.string)
+};
+
+export const Period = ({periods}) => (
+    <div>
+        <h3>⏲&nbsp;Period</h3>
+        <div className="period">
+            {periods.map(period => <div key={period.value} className={period.className}>{period.value}</div>)}
+        </div>
+    </div>);
+
+Period.propTypes = {
+    periods: PropTypes.arrayOf(PropTypes.shape())
+};

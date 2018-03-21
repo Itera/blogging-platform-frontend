@@ -1,8 +1,13 @@
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     devtool: "eval-source-map",
+    entry: './index.js',
+    output: {
+        path: path.resolve(__dirname, 'target'),
+        filename: 'build.js'
+    },
     module: {
         rules: [
             {
@@ -42,8 +47,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new WebpackCleanupPlugin('target', {verbose: true}),
         new CopyWebpackPlugin([{from: 'index.html', to: './index.html'}]),
         new CopyWebpackPlugin([{from: 'src/favicon', to: './favicon'}])
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, "target"),
+        compress: false,
+        port: 9000
+    }
 };

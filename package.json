@@ -4,7 +4,7 @@
   "description": "The simplest UI you can imagine",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --watch index.js target/build.js",
+    "start": "webpack-dev-server",
     "build": "webpack index.js target/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,10 +37,12 @@
     "style-loader": "^0.20.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
-    "webpack-cleanup-plugin": "^0.5.1"
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

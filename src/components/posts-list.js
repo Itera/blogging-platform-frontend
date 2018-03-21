@@ -1,20 +1,17 @@
-import merge from '../utils/collection-helpers';
+import React from 'react';
 
-function createPostList(posts) {
-    return posts.map(post => (`
-        <div class="post">
-            <h2>${post.title}</h2>
+export default ({posts}) => {
+    return posts.map(post => (
+        <div key={post.id} className="post">
+            <h2>{post.title}</h2>
             <p>
-                ${post.perex}
-                <a href="#">(Read more)</a>
+                {post.perex} <a href="#">(Read more)</a>
             </p>
-            <div class="post-details">
-                <div class="post-author">${post.author},</div>            
-                <div class="post-date">${post.date},</div>            
-                <div class="post-comments">(${post.comments.length} comments)</div>            
+            <div className="post-details">
+                <div className="post-author">{post.author},</div>
+                <div className="post-date">{post.date},</div>
+                <div className="post-comments">({post.comments.length} comments)</div>
             </div>
         </div>
-    `)).reduce(merge);
+    ));
 }
-
-export default createPostList;

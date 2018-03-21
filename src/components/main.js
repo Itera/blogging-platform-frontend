@@ -1,28 +1,35 @@
-import createPostList from "./posts-list";
-import title from "./title";
-import {authors, categories, fakePosts, period} from "../test-data/fakes";
-import {createAuthors, createCategories, createPeriod} from "./menu";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const main = `
-    <div class="main container">
-        <div class="title">${title}</div>
-        <div class="page row">
-            <div id="write-post"></div>
-            <div class="menu col-sm-3 col-12">
-                <ul class="row">
-                    <li class="col-4 col-sm-12">${createCategories(categories)}</li>
-                    <li class="col-4 col-sm-12">${createAuthors(authors)}</li>
-                    <li class="col-4 col-sm-12">${createPeriod(period)}</li>
-                </ul>  
-                <button type="button" class="btn btn-outline-primary btn-block">
+import PostList from "./posts-list";
+import Title from "./title";
+import {Authors, Categories, Period} from "./menu";
+
+const Main = ({categories, authors, period, posts}) => (
+    <div className="main container">
+        <div className="title"><Title/></div>
+        <div className="page row">
+            <div className="menu col-sm-3 col-12">
+                <ul className="row">
+                    <li className="col-4 col-sm-12"><Categories categories={categories}/></li>
+                    <li className="col-4 col-sm-12"><Authors authors={authors}/></li>
+                    <li className="col-4 col-sm-12"><Period periods={period}/></li>
+                </ul>
+                <button type="button" className="btn btn-outline-primary btn-block">
                     Add post
-                </button>      
+                </button>
             </div>
-            <div class="posts-list col-sm-9 col-12">
-                ${createPostList(fakePosts)}            
+            <div className="posts-list col-sm-9 col-12">
+                <PostList posts={posts}/>
             </div>
         </div>
-    </div>
-`;
+    </div>);
 
-export default main;
+Main.propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.string),
+    authors: PropTypes.arrayOf(PropTypes.string),
+    period: PropTypes.arrayOf(PropTypes.shape()),
+    posts: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+export default Main;
