@@ -1,6 +1,6 @@
-import {merge} from '../utils/collection-helpers';
+import merge from '../utils/collection-helpers';
 
-export function createPostList(posts) {
+function createPostList(posts) {
     return posts.map(post => (`
         <div class="post">
             <h2>${post.title}</h2>
@@ -16,3 +16,5 @@ export function createPostList(posts) {
         </div>
     `)).reduce(merge);
 }
+
+export default createPostList;

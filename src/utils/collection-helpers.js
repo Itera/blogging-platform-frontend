@@ -1,3 +1,3 @@
-export function merge(a, b) {
+export default function merge(a, b) {
     return a + b
 }

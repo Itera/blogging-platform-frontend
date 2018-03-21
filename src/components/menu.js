@@ -1,4 +1,4 @@
-import {merge} from '../utils/collection-helpers';
+import merge from '../utils/collection-helpers';
 
 export function createCategories(categories) {
     return `

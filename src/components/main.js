@@ -1,9 +1,9 @@
-import {createPostList} from "./posts-list";
-import {title} from "./title";
+import createPostList from "./posts-list";
+import title from "./title";
 import {authors, categories, fakePosts, period} from "../test-data/fakes";
 import {createAuthors, createCategories, createPeriod} from "./menu";
 
-export const main = `
+const main = `
     <div class="main container">
         <div class="title">${title}</div>
         <div class="page row">
@@ -24,3 +24,5 @@ export const main = `
         </div>
     </div>
 `;
+
+export default main;

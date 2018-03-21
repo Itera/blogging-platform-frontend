@@ -13,10 +13,16 @@ module.exports = {
                     options: {
                         presets: ['babel-preset-env', 'react'],
                         plugins: [
-                            require('babel-plugin-transform-object-rest-spread')
+                            require('babel-plugin-transform-object-rest-spread'),
+                            "add-react-displayname"
                         ]
                     }
                 }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['eslint-loader']
             },
             {
                 test: /\.css$/,
@@ -37,6 +43,7 @@ module.exports = {
     },
     plugins: [
         new WebpackCleanupPlugin('target', {verbose: true}),
-        new CopyWebpackPlugin([{from: 'index.html', to: 'index.html'}])
+        new CopyWebpackPlugin([{from: 'index.html', to: './index.html'}]),
+        new CopyWebpackPlugin([{from: 'src/favicon', to: './favicon'}])
     ]
 };
