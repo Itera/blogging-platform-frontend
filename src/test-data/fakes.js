@@ -1,4 +1,4 @@
-export const categories = [
+const categories = [
     'Technology',
     'Science',
     'Arts',
@@ -7,7 +7,7 @@ export const categories = [
     'Economy'
 ];
 
-export const authors = [
+const authors = [
     'Ross Geller',
     'Monica Geller Bing',
     'Phoebe Buffet',
@@ -16,14 +16,14 @@ export const authors = [
     'Joey Tribiani'
 ];
 
-export const comments = [
+const comments = [
     {id: 1, date: "2018-03-16 07:14", author: "Pavol Test", content: "I like this very much!"},
     {id: 2, date: "2018-03-17 08:16", author: "Pavol Rest", content: "I like this super much!"},
     {id: 3, date: "2018-03-18 09:18", author: "Pavol Fest", content: "I like this totally!"},
     {id: 4, date: "2018-03-19 10:20", author: "Pavol Zest", content: "I like this in a sense."},
 ];
 
-export const fakePosts = [
+const fakePosts = [
     {
         id: 1,
         title: 'First post',
@@ -62,10 +62,18 @@ export const fakePosts = [
     }
 ];
 
-export const period = [
+const period = [
     {className: 'period-year', value: '2018'},
     {className: 'period-month', value: 'March'},
     {className: 'period-month', value: 'February'},
     {className: 'period-month', value: 'January'},
     {className: 'period-year', value: '2017'},
 ];
+
+module.exports = {
+    fakePosts,
+    period,
+    categories,
+    authors,
+    comments
+};

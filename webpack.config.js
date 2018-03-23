@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
     devtool: "eval-source-map",
-    entry: './index.js',
+    entry: ['babel-polyfill', './index.js'],
     output: {
         path: path.resolve(__dirname, 'target'),
         filename: 'build.js'

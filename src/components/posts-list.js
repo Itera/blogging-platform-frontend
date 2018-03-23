@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({posts}) => {
-    return posts.map(post => (
+const posts = ({posts}) => {
+    return posts ? posts.map(post => (
         <div key={post.id} className="post">
             <h2>{post.title}</h2>
             <p>
@@ -13,5 +14,11 @@ export default ({posts}) => {
                 <div className="post-comments">({post.comments.length} comments)</div>
             </div>
         </div>
-    ));
-}
+    )) : <div style={{fontSize: '2em'}}>No posts yet...</div>;
+};
+
+posts.propTypes = {
+    posts: PropTypes.array
+};
+
+export default posts;
