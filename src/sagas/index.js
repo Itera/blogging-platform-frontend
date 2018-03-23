@@ -3,7 +3,7 @@ import Api from '../api';
 import {APPLICATION_STARTED, ERROR, RELOAD_POSTS, RELOAD_AUTHORS, RELOAD_CATEGORIES, RELOAD_PERIODS} from "../actions";
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* fetchPosts() {
+function* fetchInitialData() {
     try {
         const [posts, categories, period, authors] = yield all([
             call(Api.fetchPosts),
@@ -21,7 +21,7 @@ function* fetchPosts() {
 }
 
 function* mySaga() {
-    yield takeEvery(APPLICATION_STARTED, fetchPosts);
+    yield takeEvery(APPLICATION_STARTED, fetchInitialData);
 }
 
 export default mySaga;
