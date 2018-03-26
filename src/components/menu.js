@@ -5,7 +5,7 @@ export const Categories = ({categories}) => (
     <div>
         <h3>📚&nbsp;Category</h3>
         <div className="categories">
-            {categories.map(category => <div key={category} className="category">{category}</div>)}
+            {categories && categories.map(category => <div key={category} className="category">{category}</div>)}
         </div>
     </div>);
 
@@ -17,7 +17,7 @@ export const Authors = ({authors}) => (
     <div>
         <h3>🤷&nbsp;Author</h3>
         <div className="authors">
-            {authors.map(author => <div key={author} className="author">{author}</div>)}
+            {authors && authors.map(author => <div key={author} className="author">{author}</div>)}
         </div>
     </div>);
 
@@ -29,7 +29,7 @@ export const Period = ({periods}) => (
     <div>
         <h3>⏲&nbsp;Period</h3>
         <div className="period">
-            {periods.map(period => <div key={period.value} className={period.className}>{period.value}</div>)}
+            {periods && periods.map(period => <div key={period.value} className={period.className}>{period.value}</div>)}
         </div>
     </div>);
 

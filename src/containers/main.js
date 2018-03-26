@@ -1,5 +1,6 @@
-import {connect} from 'react-redux'
-import Main from '../components/main'
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import Main from '../components/main';
 
 const mapStateToProps = (state) => {
     return {
@@ -10,8 +11,8 @@ const mapStateToProps = (state) => {
     }
 };
 
-const MainContainer = connect(
+const MainContainer = withRouter(connect(
     mapStateToProps
-)(Main);
+)(Main));
 
-export default MainContainer
+export default MainContainer;

@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './src/styles/menu.css';
@@ -13,11 +14,16 @@ import './src/styles/styles.css';
 import reducers from './src/reducers';
 import mySaga from './src/sagas';
 
+import Title from "./src/components/title";
 import Main from "./src/containers/main";
+import AddPost from "./src/containers/add-post";
 import {APPLICATION_STARTED} from "./src/actions";
 
 const sagaMiddleware = createSagaMiddleware();
-let store = createStore(reducers, applyMiddleware(sagaMiddleware));
+let store = createStore(
+    reducers,
+    applyMiddleware(sagaMiddleware)
+);
 
 sagaMiddleware.run(mySaga);
 
@@ -25,7 +31,16 @@ store.dispatch({type: APPLICATION_STARTED});
 
 ReactDOM.render(
     <Provider store={store}>
-        <Main/>
+        <Router>
+            <div className="main container">
+                <div className="title"><Title/></div>
+                <div className="page">
+                    <Route exact path="/" component={Main}/>
+                    <Route exact path="/add-post" component={AddPost}/>
+                </div>
+            </div>
+        </Router>
     </Provider>,
     document.getElementById('app')
-);
+)
+;
