@@ -1,19 +1,67 @@
 const categories = [
-    'Technology',
-    'Science',
-    'Arts',
-    'Music',
-    'Cinema',
-    'Economy'
+    {id: 1, name: 'Technology'},
+    {id: 2, name: 'Science'},
+    {id: 3, name: 'Arts'},
+    {id: 4, name: 'Music'},
+    {id: 5, name: 'Cinema'},
+    {id: 6, name: 'Economy'}
 ];
 
 const authors = [
-    'Ross Geller',
-    'Monica Geller Bing',
-    'Phoebe Buffet',
-    'Chandler Bing',
-    'Rachel Green',
-    'Joey Tribiani'
+    {
+        id: 1,
+        username: 'Ross',
+        firstName: 'Ross',
+        lastName: 'Geller',
+        email: 'Ross@friends.com',
+        password: 'Ross',
+        phone: '12345678'
+    },
+    {
+        id: 2,
+        username: 'Monica',
+        firstName: 'Monica',
+        lastName: 'Geller Bing',
+        email: 'Monica@friends.com',
+        password: 'Monica',
+        phone: '12345678'
+    },
+    {
+        id: 3,
+        username: 'Phoebe',
+        firstName: 'Phoebe',
+        lastName: 'Buffet',
+        email: 'Phoebe@friends.com',
+        password: 'Phoebe',
+        phone: '12345678'
+    },
+    {
+        id: 4,
+        username: 'Chandler',
+        firstName: 'Chandler',
+        lastName: 'Bing',
+        email: 'Chandler@friends.com',
+        password: 'Chandler',
+        phone: '12345678'
+    },
+    {
+        id: 5,
+        username: 'Rachel',
+        firstName: 'Rachel',
+        lastName: 'Green',
+        email: 'Rachel@friends.com',
+        password: 'Rachel',
+        phone: '12345678'
+    },
+    {
+        id: 6,
+        username: 'Joey',
+        firstName: 'Joey',
+        lastName: 'Tribiani',
+        email: 'Joey@friends.com',
+        password: 'Joey',
+        phone: '12345678'
+    }
 ];
 
 const comments = [
@@ -62,17 +110,8 @@ const fakePosts = [
     }
 ];
 
-const period = [
-    {className: 'period-year', value: '2018'},
-    {className: 'period-month', value: 'March'},
-    {className: 'period-month', value: 'February'},
-    {className: 'period-month', value: 'January'},
-    {className: 'period-year', value: '2017'},
-];
-
 module.exports = {
     fakePosts,
-    period,
     categories,
     authors,
     comments

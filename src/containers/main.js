@@ -6,7 +6,6 @@ const mapStateToProps = (state) => {
     return {
         categories: state.categories,
         authors: state.authors,
-        period: state.period,
         posts: state.posts
     }
 };

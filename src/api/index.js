@@ -24,14 +24,8 @@ function fetchCategories() {
     return fetchFromBackend('/category');
 }
 
-function fetchPeriod() {
-    // TODO: Implement
-    return require('../test-data/fakes').period;
-}
-
 export default {
     fetchAuthors,
     fetchCategories,
-    fetchPeriod,
     fetchPosts
 };

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 
 import PostList from "./posts-list";
-import {Authors, Categories, Period} from "./menu";
+import {Authors, Categories} from "./menu";
+import {Author, Category, Post} from "../model";
 
-const Main = ({categories, authors, period, posts}) => (
+const Main = ({categories, authors, posts}) => (
     <div className="row">
         <div className="menu col-sm-3 col-12">
             <ul className="row">
                 <li className="col-4 col-sm-12"><Categories categories={categories}/></li>
                 <li className="col-4 col-sm-12"><Authors authors={authors}/></li>
-                <li className="col-4 col-sm-12"><Period periods={period}/></li>
             </ul>
             <Link to="/add-post">
                 <button type="button" className="btn btn-outline-primary btn-block">
@@ -26,10 +26,9 @@ const Main = ({categories, authors, period, posts}) => (
 );
 
 Main.propTypes = {
-    categories: PropTypes.arrayOf(PropTypes.string),
-    authors: PropTypes.arrayOf(PropTypes.string),
-    period: PropTypes.arrayOf(PropTypes.shape()),
-    posts: PropTypes.arrayOf(PropTypes.shape()),
+    categories: PropTypes.arrayOf(Category),
+    authors: PropTypes.arrayOf(Author),
+    posts: PropTypes.arrayOf(Post)
 };
 
 export default Main;

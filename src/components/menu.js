@@ -1,38 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Author, Category} from "../model";
 
 export const Categories = ({categories}) => (
     <div>
         <h3>📚&nbsp;Category</h3>
         <div className="categories">
-            {categories && categories.map(category => <div key={category} className="category">{category}</div>)}
+            {categories && categories.map(category => <div key={category.id} className="category">
+                {category.name}
+            </div>)}
         </div>
     </div>);
 
 Categories.propTypes = {
-    categories: PropTypes.arrayOf(PropTypes.string)
+    categories: PropTypes.arrayOf(Category)
 };
 
 export const Authors = ({authors}) => (
     <div>
         <h3>🤷&nbsp;Author</h3>
         <div className="authors">
-            {authors && authors.map(author => <div key={author} className="author">{author}</div>)}
+            {authors && authors.map(author => <div key={author.id} className="author">
+                {author.firstName + ' ' + author.lastName}
+            </div>)}
         </div>
     </div>);
 
 Authors.propTypes = {
-    authors: PropTypes.arrayOf(PropTypes.string)
-};
-
-export const Period = ({periods}) => (
-    <div>
-        <h3>⏲&nbsp;Period</h3>
-        <div className="period">
-            {periods && periods.map(period => <div key={period.value} className={period.className}>{period.value}</div>)}
-        </div>
-    </div>);
-
-Period.propTypes = {
-    periods: PropTypes.arrayOf(PropTypes.shape())
+    authors: PropTypes.arrayOf(Author)
 };

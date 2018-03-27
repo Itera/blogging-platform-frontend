@@ -405,6 +405,12 @@ definitions:
       date:
         type: "string"
         format: "date-time"
+      perex:
+        type: "string"
+        description: "Description of post that will be displayed in list of posts"
+      content:
+        type: "string"
+        description: "Actual content of the post"
       author:
         $ref: "#/definitions/Author"
       category:
@@ -448,3 +454,5 @@ definitions:
         type: "string"
       content:
         type: "string"
+      postId:
+        type: "integer"

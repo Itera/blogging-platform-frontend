@@ -1,10 +1,16 @@
-import {RELOAD_AUTHORS, RELOAD_CATEGORIES, RELOAD_PERIODS, RELOAD_POSTS} from "../actions";
+import {RELOAD_AUTHORS, RELOAD_CATEGORIES, RELOAD_POSTS} from "../actions";
 
 const defaultState = {
     categories: [],
-    period: [],
     authors: [],
-    posts: []
+    posts: [],
+    newPost: {
+        author: '',
+        title: '',
+        categories: [],
+        perex: '',
+        content: ''
+    }
 };
 
 export default (state = defaultState, action) => {
@@ -12,8 +18,7 @@ export default (state = defaultState, action) => {
     switch (action.type) {
         case RELOAD_POSTS:
         case RELOAD_AUTHORS:
-        case RELOAD_CATEGORIES:
-        case RELOAD_PERIODS: {
+        case RELOAD_CATEGORIES: {
             return {...state, [action.data.name]: action.data.payload}
         }
     }
