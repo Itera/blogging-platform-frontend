@@ -4,3 +4,8 @@ body {
     font-size: 1em;
     min-width: 400px;
 }
+
+.category-badge {
+    padding: 0.5em;
+    margin: 0.5em;
+}
