@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Post} from "../model";
+import {Link} from 'react-router-dom';
+import {Post} from '../model';
 
 const posts = ({posts}) => {
     return posts ? posts.map(post => (
         <div key={post.id} className="post">
             <h2>{post.title}</h2>
             <p>
-                {post.perex} <a href="#">(Read more)</a>
+                {post.perex} <Link to={`/view-post/${post.id}`}>(Read more)</Link>
             </p>
             <div className="post-details">
                 <div className="post-author">{post.author.firstName + post.author.lastName},</div>

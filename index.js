@@ -36,6 +36,7 @@ ReactDOM.render(
                 <div className="title"><Title/></div>
                 <div className="page">
                     <Route exact path="/" component={Main}/>
+                    <Route path="/view-post/:id" component={Main}/>
                     <Route exact path="/add-post" component={AddPost}/>
                 </div>
             </div>
