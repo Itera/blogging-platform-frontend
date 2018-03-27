@@ -1,8 +1,7 @@
-import {call, all, put, takeEvery} from 'redux-saga/effects'
+import {call, all, put, takeEvery} from 'redux-saga/effects';
 import Api from '../api';
-import {APPLICATION_STARTED, ERROR, RELOAD_POSTS, RELOAD_AUTHORS, RELOAD_CATEGORIES} from "../actions";
+import {APPLICATION_STARTED, ERROR, RELOAD_POSTS, RELOAD_AUTHORS, RELOAD_CATEGORIES, POST_SAVE} from "../actions";
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* fetchInitialData() {
     try {
         const [posts, categories, authors] = yield all([
@@ -18,8 +17,17 @@ function* fetchInitialData() {
     }
 }
 
+function* savePostAndRedirect(action) {
+    try {
+        yield call(Api.savePost, action.data);
+    } catch (e) {
+        yield put({type: ERROR, message: e.message});
+    }
+}
+
 function* mySaga() {
     yield takeEvery(APPLICATION_STARTED, fetchInitialData);
+    yield takeEvery(POST_SAVE, savePostAndRedirect)
 }
 
 export default mySaga;

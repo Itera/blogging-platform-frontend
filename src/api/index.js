@@ -24,8 +24,26 @@ function fetchCategories() {
     return fetchFromBackend('/category');
 }
 
+function postToBackend(endpoint, data) {
+    return fetch(backendURL + endpoint, {
+        'mode': 'cors',
+        'method': 'post',
+        'body': JSON.stringify(data),
+        'headers': {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+        .catch(error => console.error(error));
+}
+
+function savePost(post) {
+    return postToBackend('/post', post)
+}
+
 export default {
     fetchAuthors,
     fetchCategories,
-    fetchPosts
+    fetchPosts,
+    savePost
 };

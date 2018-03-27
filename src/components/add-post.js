@@ -44,9 +44,12 @@ const AddPost = ({categories, authors, post, onCategoryAdded, onPostSave, onValu
         </div>
         <div className="row">
             <div className="col-6">
-                <button type="button" className="btn btn-outline-primary btn-block" onClick={() => onPostSave(post)}>
-                    Save post
-                </button>
+                <Link to="/">
+                    <button type="button" className="btn btn-outline-primary btn-block"
+                            onClick={() => onPostSave(post)}>
+                        Save post
+                    </button>
+                </Link>
             </div>
             <div className="col-6">
                 <Link to="/">
