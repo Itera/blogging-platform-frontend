@@ -17,7 +17,7 @@ function* fetchInitialData() {
     }
 }
 
-function* savePostAndRedirect(action) {
+function* savePost(action) {
     try {
         yield call(Api.savePost, action.data);
     } catch (e) {
@@ -27,7 +27,7 @@ function* savePostAndRedirect(action) {
 
 function* mySaga() {
     yield takeEvery(APPLICATION_STARTED, fetchInitialData);
-    yield takeEvery(POST_SAVE, savePostAndRedirect)
+    yield takeEvery(POST_SAVE, savePost)
 }
 
 export default mySaga;
