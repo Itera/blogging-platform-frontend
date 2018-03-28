@@ -7,6 +7,10 @@ import {Authors, Categories} from "./menu";
 import {Author, Category, Post} from "../model";
 import ViewPost from "./view-post";
 
+function selectPost(posts, id) {
+    return posts.find(post => post.id === Number.parseInt(id));
+}
+
 const Main = ({categories, authors, posts, match}) => (
     <div className="row">
         <div className="menu col-sm-3 col-12">
@@ -22,7 +26,7 @@ const Main = ({categories, authors, posts, match}) => (
         </div>
         <div className="posts-list col-sm-9 col-12">
             {!match.params.id && <PostList posts={posts}/>}
-            {match.params.id && <ViewPost post={posts.find(post => post.id === Number.parseInt(match.params.id))}/>}
+            {match.params.id && <ViewPost post={selectPost(posts, match.params.id)}/>}
         </div>
     </div>
 );
