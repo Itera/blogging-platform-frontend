@@ -7,12 +7,20 @@ const defaultState = {
     categories: [],
     authors: [],
     posts: [],
-    post: {
+    addPost: {
         author: '',
         title: '',
         categories: '',
         perex: '',
         content: ''
+    },
+    viewPost: {
+        author: '',
+        title: '',
+        categories: '',
+        perex: '',
+        content: '',
+        comments: []
     }
 };
 
@@ -26,16 +34,16 @@ export default (state = defaultState, action) => {
         }
         case POST_FORM_VALUE_CHANGED: {
             if (action.data.name === 'existingAuthor') {
-                return {...state, post: {...state.post, author: action.data.value}}
+                return {...state, addPost: {...state.addPost, author: action.data.value}}
             }
-            return {...state, post: {...state.post, [action.data.name]: action.data.value}};
+            return {...state, addPost: {...state.addPost, [action.data.name]: action.data.value}};
         }
         case CATEGORY_ADDED_TO_POST: {
-            const existingCategories = state.post.categories;
+            const existingCategories = state.addPost.categories;
             return {
                 ...state,
-                post: {
-                    ...state.post,
+                addPost: {
+                    ...state.addPost,
                     categories: existingCategories ? existingCategories + ', ' + action.data : action.data
                 }
             }

@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
     return {
         categories: state.categories,
         authors: state.authors,
-        post: state.post,
+        addPost: state.addPost,
     };
 };
 

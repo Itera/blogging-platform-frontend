@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {Post} from '../model';
 
-const ViewPost = ({post}) => {
-    if (!post) {
-        return <div className="alert alert-danger" role="alert">This post does not exist.</div>
+const ViewPost = ({viewPost}) => {
+    if (!viewPost) {
+        return <div className="col-sm-9 col-12 alert alert-danger" role="alert">This post does not exist.</div>
     }
-    return <div>
-        <h2>{post.title}</h2>
-        <p>{post.perex}</p>
-        <p>{post.content}</p>
+    return <div className="col-sm-9 col-12">
+        <h2>{viewPost.title}</h2>
+        <p>{viewPost.perex}</p>
+        <p>{viewPost.content}</p>
         <Link to="/">Back</Link>
     </div>
 };
 
 ViewPost.propTypes = {
-    post: PropTypes.shape(Post)
+    viewPost: PropTypes.shape(Post)
 };
 
 export default ViewPost;

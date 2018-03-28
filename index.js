@@ -17,6 +17,8 @@ import mySaga from './src/sagas';
 import Title from "./src/components/title";
 import Main from "./src/containers/main";
 import AddPost from "./src/containers/add-post";
+import ViewPost from "./src/containers/view-post";
+import Menu from './src/containers/menu';
 import {APPLICATION_STARTED} from "./src/actions";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -34,9 +36,10 @@ ReactDOM.render(
         <Router>
             <div className="main container">
                 <div className="title"><Title/></div>
-                <div className="page">
+                <div className="page row">
+                    <Menu {...store}/>
                     <Route exact path="/" component={Main}/>
-                    <Route path="/view-post/:id" component={Main}/>
+                    <Route exact path="/view-post/:id" component={ViewPost}/>
                     <Route exact path="/add-post" component={AddPost}/>
                 </div>
             </div>
