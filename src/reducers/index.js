@@ -17,7 +17,7 @@ const defaultState = {
     viewPost: {
         author: '',
         title: '',
-        categories: '',
+        categories: [],
         perex: '',
         content: '',
         comments: []

@@ -30,5 +30,5 @@ export const Post = PropTypes.shape({
     perex: PropTypes.string,
     content: PropTypes.string,
     author: Author,
-    category: Category
+    category: PropTypes.arrayOf(Category)
 });
