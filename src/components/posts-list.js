@@ -12,7 +12,7 @@ const posts = ({posts}) => {
                 {post.perex} <Link to={`/view-post/${post.id}`}>(Read more)</Link>
             </p>
             <div className="post-details">
-                <div className="post-author">{post.author.firstName + post.author.lastName},&nbsp;</div>
+                <div className="post-author">{post.author.firstName + ' ' + post.author.lastName},&nbsp;</div>
                 <div className="post-date">{post.date}</div>
             </div>
         </div>
