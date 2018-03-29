@@ -1,6 +1,6 @@
 import {
     CATEGORY_ADDED_TO_POST, POST_FORM_VALUE_CHANGED, RELOAD_AUTHORS, RELOAD_CATEGORIES,
-    RELOAD_POSTS
+    RELOAD_POSTS, VIEW_POST
 } from "../actions";
 
 const defaultState = {
@@ -31,6 +31,9 @@ export default (state = defaultState, action) => {
         case RELOAD_AUTHORS:
         case RELOAD_CATEGORIES: {
             return {...state, [action.data.name]: action.data.payload}
+        }
+        case VIEW_POST: {
+            return {...state, viewPost: action.data}
         }
         case POST_FORM_VALUE_CHANGED: {
             if (action.data.name === 'existingAuthor') {

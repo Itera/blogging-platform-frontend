@@ -12,14 +12,13 @@ import './src/styles/title.css';
 import './src/styles/styles.css';
 
 import reducers from './src/reducers';
-import mySaga from './src/sagas';
+import mainSaga from './src/sagas';
 
 import Title from "./src/components/title";
 import Main from "./src/containers/main";
 import AddPost from "./src/containers/add-post";
 import ViewPost from "./src/containers/view-post";
 import Menu from './src/containers/menu';
-import {APPLICATION_STARTED} from "./src/actions";
 
 const sagaMiddleware = createSagaMiddleware();
 let store = createStore(
@@ -27,9 +26,7 @@ let store = createStore(
     applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(mySaga);
-
-store.dispatch({type: APPLICATION_STARTED});
+sagaMiddleware.run(mainSaga);
 
 ReactDOM.render(
     <Provider store={store}>

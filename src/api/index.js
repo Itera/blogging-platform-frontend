@@ -16,6 +16,10 @@ function fetchPosts() {
     return fetchFromBackend('/post');
 }
 
+function fetchPost(id) {
+    return fetchFromBackend(`/post/${id}`);
+}
+
 function fetchAuthors() {
     return fetchFromBackend('/author');
 }
@@ -45,5 +49,6 @@ export default {
     fetchAuthors,
     fetchCategories,
     fetchPosts,
+    fetchPost,
     savePost
 };
