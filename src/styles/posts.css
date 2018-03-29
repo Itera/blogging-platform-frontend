@@ -19,3 +19,7 @@
     color: grey;
     text-decoration: underline;
 }
+
+.comment-list {
+    margin-top: 1em;
+}

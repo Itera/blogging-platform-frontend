@@ -21,7 +21,11 @@ app.get('/post/', (req, res) => res.json(data.fakePosts));
 app.post('/post', (req, res) => res.json({status: 'OK', body: JSON.stringify(req.body)}));
 app.get('/author', (req, res) => res.json(data.authors));
 app.get('/category', (req, res) => res.json(data.categories));
-app.get('/comment', (req, res) => res.json(data.comments));
+app.get('/comment/post/:postId', (req, res) => res.json(
+    data.comments
+        .filter(comment => comment.postId === Number.parseInt(req.params.postId))
+        .map(comment => ({...comment, postId: Number.parseInt(req.params.postId)}))
+));
 
 app.listen(8080);
 console.info('Listening on port 8080');

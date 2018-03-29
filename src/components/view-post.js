@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {Post} from '../model';
+import CommentList from "./comment-list";
 
 const ViewPost = ({viewPost}) => {
     if (!viewPost) {
@@ -12,6 +13,7 @@ const ViewPost = ({viewPost}) => {
         <p>{viewPost.perex}</p>
         <p>{viewPost.content}</p>
         <Link to="/">Back</Link>
+        <CommentList comments={viewPost.comments}/>
     </div>
 };
 

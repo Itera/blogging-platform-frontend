@@ -19,6 +19,7 @@ import Main from "./src/containers/main";
 import AddPost from "./src/containers/add-post";
 import ViewPost from "./src/containers/view-post";
 import Menu from './src/containers/menu';
+import {APPLICATION_LOADED} from "./src/actions";
 
 const sagaMiddleware = createSagaMiddleware();
 let store = createStore(
@@ -27,6 +28,8 @@ let store = createStore(
 );
 
 sagaMiddleware.run(mainSaga);
+
+store.dispatch({type: APPLICATION_LOADED});
 
 ReactDOM.render(
     <Provider store={store}>

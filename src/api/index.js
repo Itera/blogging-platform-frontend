@@ -20,6 +20,10 @@ function fetchPost(id) {
     return fetchFromBackend(`/post/${id}`);
 }
 
+function fetchCommentsForPost(postId) {
+    return fetchFromBackend(`/comment/post/${postId}`);
+}
+
 function fetchAuthors() {
     return fetchFromBackend('/author');
 }
@@ -50,5 +54,6 @@ export default {
     fetchCategories,
     fetchPosts,
     fetchPost,
+    fetchCommentsForPost,
     savePost
 };

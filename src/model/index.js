@@ -15,6 +15,14 @@ export const Category = PropTypes.shape({
     name: PropTypes.string
 });
 
+export const Comment = PropTypes.shape({
+    id: PropTypes.number,
+    date: PropTypes.string,
+    author: PropTypes.string,
+    content: PropTypes.string,
+    postId: PropTypes.number
+});
+
 export const Post = PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,

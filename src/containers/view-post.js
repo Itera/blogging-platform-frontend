@@ -5,6 +5,7 @@ import ViewPost from '../components/view-post';
 const mapStateToProps = (state) => {
     return {
         viewPost: state.viewPost,
+        comments: state.viewPost.comments
     }
 };
 
