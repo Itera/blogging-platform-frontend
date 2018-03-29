@@ -413,8 +413,10 @@ definitions:
         description: "Actual content of the post"
       author:
         $ref: "#/definitions/Author"
-      category:
-        $ref: "#/definitions/Category"
+      categories:
+        type: "array"
+        items:
+          $ref: "#/definitions/Category"
   Category:
     type: "object"
     properties:
