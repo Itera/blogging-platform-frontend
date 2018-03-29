@@ -20,7 +20,7 @@ const routes = {
             const posts = yield call(Api.fetchPosts);
             yield put({type: RELOAD_POSTS, data: {name: 'posts', payload: posts}});
         } catch (e) {
-            yield put({type: ERROR, message: e.message});
+            yield put({type: ERROR, data: e.message});
         }
     },
     '/view-post/:id': function* viewPostSaga({id}) {
@@ -31,7 +31,7 @@ const routes = {
             ]);
             yield put({type: VIEW_POST, data: {...post, comments}});
         } catch (e) {
-            yield put({type: ERROR, message: e.message});
+            yield put({type: ERROR, data: e.message});
         }
     }
 };

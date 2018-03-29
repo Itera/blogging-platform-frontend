@@ -9,7 +9,9 @@ function fetchFromBackend(endpoint) {
             'Content-Type': 'application/json'
         }
     }).then(response => response.json())
-        .catch(error => console.error(error));
+        .catch(error => {
+            throw new Error("Unable to fetch from backend due to error: " + error);
+        });
 }
 
 function fetchPosts() {
@@ -42,7 +44,9 @@ function postToBackend(endpoint, data) {
             'Content-Type': 'application/json'
         }
     }).then(response => response.json())
-        .catch(error => console.error(error));
+        .catch(error => {
+            new Error("Unable to save to backend due to error: " + error);
+        });
 }
 
 function savePost(post) {

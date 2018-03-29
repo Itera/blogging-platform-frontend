@@ -5,13 +5,13 @@ import {Post} from '../model';
 import CommentList from "./comment-list";
 
 const ViewPost = ({viewPost}) => {
-    if (!viewPost) {
+    if (!viewPost || viewPost === {}) {
         return <div className="col-sm-9 col-12 alert alert-danger" role="alert">This post does not exist.</div>
     }
     return <div className="col-sm-9 col-12">
         <h2>{viewPost.title}</h2>
         <div>
-            {viewPost.categories.map(category =>
+            {viewPost.categories && viewPost.categories.map(category =>
                 <span key={category.id} className="badge badge-primary category-badge">{category.name}</span>)}
         </div>
         <p>{viewPost.perex}</p>
@@ -22,7 +22,7 @@ const ViewPost = ({viewPost}) => {
 };
 
 ViewPost.propTypes = {
-    viewPost: PropTypes.shape(Post)
+    viewPost: PropTypes.oneOfType([PropTypes.shape(Post), PropTypes.any])
 };
 
 export default ViewPost;

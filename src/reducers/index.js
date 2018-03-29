@@ -1,5 +1,5 @@
 import {
-    CATEGORY_ADDED_TO_POST, POST_FORM_VALUE_CHANGED, RELOAD_AUTHORS, RELOAD_CATEGORIES,
+    CATEGORY_ADDED_TO_POST, ERROR, POST_FORM_VALUE_CHANGED, RELOAD_AUTHORS, RELOAD_CATEGORIES,
     RELOAD_POSTS, VIEW_POST
 } from "../actions";
 
@@ -21,11 +21,13 @@ const defaultState = {
         perex: '',
         content: '',
         comments: []
-    }
+    },
+    error: null
 };
 
 export default (state = defaultState, action) => {
     console.info(action);
+    state = {...state, error: null};
     switch (action.type) {
         case RELOAD_POSTS:
         case RELOAD_AUTHORS:
@@ -50,6 +52,9 @@ export default (state = defaultState, action) => {
                     categories: existingCategories ? existingCategories + ', ' + action.data : action.data
                 }
             }
+        }
+        case ERROR: {
+            return {...state, error: action.data}
         }
     }
     return state;
