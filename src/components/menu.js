@@ -33,8 +33,8 @@ Authors.propTypes = {
 
 const Menu = ({authors, categories}) => <div className="menu col-sm-3 col-12">
     <ul className="row">
-        <li className="col-4 col-sm-12"><Categories categories={categories}/></li>
-        <li className="col-4 col-sm-12"><Authors authors={authors}/></li>
+        <li className="col-6 col-sm-12"><Categories categories={categories}/></li>
+        <li className="col-6 col-sm-12"><Authors authors={authors}/></li>
     </ul>
     <Link to="/add-post">
         <button type="button" className="btn btn-outline-primary btn-block">
