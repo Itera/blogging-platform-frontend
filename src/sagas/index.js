@@ -9,7 +9,8 @@ import {
     RELOAD_CATEGORIES,
     POST_SAVE,
     VIEW_POST,
-    APPLICATION_LOADED
+    APPLICATION_LOADED,
+    SAVE_COMMENT
 } from "../actions";
 
 const history = createHashHistory();
@@ -57,8 +58,17 @@ function* savePost(action) {
     }
 }
 
+function* saveComment(action) {
+    try {
+        yield call(Api.saveComment, action.data);
+    } catch (e) {
+        yield put({type: ERROR, message: e.message});
+    }
+}
+
 function* mainSaga() {
     yield takeEvery(POST_SAVE, savePost);
+    yield takeEvery(SAVE_COMMENT, saveComment);
     yield takeEvery(APPLICATION_LOADED, fetchMainPageData);
     yield fork(router, history, routes);
 }

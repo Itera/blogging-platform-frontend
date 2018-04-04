@@ -53,11 +53,16 @@ function savePost(post) {
     return postToBackend('/post', post)
 }
 
+function saveComment(comment) {
+    return postToBackend(`/comment/post/${comment.postId}`, comment);
+}
+
 export default {
     fetchAuthors,
     fetchCategories,
     fetchPosts,
     fetchPost,
     fetchCommentsForPost,
-    savePost
+    savePost,
+    saveComment
 };

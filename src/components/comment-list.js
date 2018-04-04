@@ -14,7 +14,6 @@ const CommentList = ({comments}) => <div className="comment-list">
             <p className="mb-1">{comment.content}</p>
         </li>)}
     </ul>
-    TODO: add comment form
 </div>;
 
 CommentList.propTypes = {

@@ -1,4 +1,5 @@
 import {
+    ADD_COMMENT_FORM_VALUE_CHANGED,
     CATEGORY_ADDED_TO_POST, ERROR, POST_FORM_VALUE_CHANGED, RELOAD_AUTHORS, RELOAD_CATEGORIES,
     RELOAD_POSTS, VIEW_POST
 } from "../actions";
@@ -20,7 +21,11 @@ const defaultState = {
         categories: [],
         perex: '',
         content: '',
-        comments: []
+        comments: [],
+        addComment: {
+            author: '',
+            content: ''
+        }
     },
     error: null
 };
@@ -35,13 +40,27 @@ export default (state = defaultState, action) => {
             return {...state, [action.data.name]: action.data.payload}
         }
         case VIEW_POST: {
-            return {...state, viewPost: action.data}
+            return {
+                ...state, viewPost: {
+                    ...action.data,
+                    addComment: {author: '', content: '', postId: action.data.id}
+                }
+            }
         }
         case POST_FORM_VALUE_CHANGED: {
             if (action.data.name === 'existingAuthor') {
                 return {...state, addPost: {...state.addPost, author: action.data.value}}
             }
             return {...state, addPost: {...state.addPost, [action.data.name]: action.data.value}};
+        }
+        case ADD_COMMENT_FORM_VALUE_CHANGED: {
+            return {
+                ...state,
+                viewPost: {
+                    ...state.viewPost,
+                    addComment: {...state.viewPost.addComment, [action.data.name]: action.data.value}
+                }
+            };
         }
         case CATEGORY_ADDED_TO_POST: {
             const existingCategories = state.addPost.categories;

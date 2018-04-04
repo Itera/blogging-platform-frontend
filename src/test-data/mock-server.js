@@ -26,6 +26,7 @@ app.get('/comment/post/:postId', (req, res) => res.json(
         .filter(comment => comment.postId === Number.parseInt(req.params.postId))
         .map(comment => ({...comment, postId: Number.parseInt(req.params.postId)}))
 ));
+app.post('/comment/post/:postId', (req, res) => res.json({status: 'OK', body: JSON.stringify(req.body)}));
 
 app.listen(8080);
 console.info('Listening on port 8080');
