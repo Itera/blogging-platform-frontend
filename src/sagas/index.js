@@ -46,15 +46,16 @@ function* fetchMainPageData() {
         yield put({type: RELOAD_AUTHORS, data: {name: 'authors', payload: authors}});
         yield put({type: RELOAD_CATEGORIES, data: {name: 'categories', payload: categories}});
     } catch (e) {
-        yield put({type: ERROR, message: e.message});
+        yield put({type: ERROR, data: e.message});
     }
 }
 
 function* savePost(action) {
     try {
         yield call(Api.savePost, action.data);
+        history.push('/');
     } catch (e) {
-        yield put({type: ERROR, message: e.message});
+        yield put({type: ERROR, data: e.message});
     }
 }
 
@@ -62,7 +63,7 @@ function* saveComment(action) {
     try {
         yield call(Api.saveComment, action.data);
     } catch (e) {
-        yield put({type: ERROR, message: e.message});
+        yield put({type: ERROR, data: e.message});
     }
 }
 

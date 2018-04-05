@@ -32,3 +32,7 @@ export const Post = PropTypes.shape({
     author: Author,
     category: PropTypes.arrayOf(Category)
 });
+
+Post.validate = (post) => {
+    return !(post.title === "" || post.perex === "" || post.content === "" || post.author === "0");
+};

@@ -8,10 +8,8 @@ const AddPost = ({categories, authors, addPost, onCategoryAdded, onPostSave, onV
         <form>
             <div className="form-group">
                 <label htmlFor="postAuthor">Author</label>
-                <input type="text" className="form-control" id="postAuthor" name="author" placeholder="John Doe"
-                       value={addPost.author} onChange={onValueChanged}/>
-                or:&nbsp;
-                <select onChange={onValueChanged} name="existingAuthor" id="existingAuthor">
+                <select onChange={onValueChanged} value={addPost.author} name="existingAuthor" id="postAuthor"
+                        className="form-control">
                     <option value={0}>Select existing one...</option>
                     {authors.map(author => <option key={author.id} value={author.firstName + ' ' + author.lastName}>
                         {author.firstName + ' ' + author.lastName}
@@ -31,9 +29,9 @@ const AddPost = ({categories, authors, addPost, onCategoryAdded, onPostSave, onV
                        placeholder="Comma delimited list of categories" value={addPost.categories}/>
                 <div>
                     or click to select: {categories && categories.map(category =>
-                        <a key={category.id} onClick={() => onCategoryAdded(category.name)}>
-                            <span className="badge badge-primary category-badge">{category.name}</span>
-                        </a>)}
+                    <a key={category.id} onClick={() => onCategoryAdded(category.name)}>
+                        <span className="badge badge-primary category-badge">{category.name}</span>
+                    </a>)}
                 </div>
             </div>
             <div className="form-group">
@@ -48,12 +46,10 @@ const AddPost = ({categories, authors, addPost, onCategoryAdded, onPostSave, onV
             </div>
             <div className="row">
                 <div className="col-6">
-                    <Link to="/">
-                        <button type="button" className="btn btn-outline-primary btn-block"
-                                onClick={() => onPostSave(addPost)}>
-                            Save post
-                        </button>
-                    </Link>
+                    <button type="button" className="btn btn-outline-primary btn-block"
+                            onClick={() => onPostSave(addPost)}>
+                        Save post
+                    </button>
                 </div>
                 <div className="col-6">
                     <Link to="/">
