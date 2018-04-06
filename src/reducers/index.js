@@ -1,6 +1,6 @@
 import {
     ADD_COMMENT_FORM_VALUE_CHANGED,
-    CATEGORY_ADDED_TO_POST, ERROR, POST_FORM_VALUE_CHANGED, RELOAD_AUTHORS, RELOAD_CATEGORIES,
+    CATEGORY_ADDED_TO_POST, COMMENT_ADDED, ERROR, POST_FORM_VALUE_CHANGED, RELOAD_AUTHORS, RELOAD_CATEGORIES,
     RELOAD_POSTS, VIEW_POST
 } from "../actions";
 
@@ -69,6 +69,15 @@ export default (state = defaultState, action) => {
                 addPost: {
                     ...state.addPost,
                     categories: existingCategories ? existingCategories + ', ' + action.data : action.data
+                }
+            }
+        }
+        case COMMENT_ADDED: {
+            return {
+                ...state,
+                viewPost: {
+                    ...state.viewPost,
+                    comments: [...state.viewPost.comments, action.data]
                 }
             }
         }

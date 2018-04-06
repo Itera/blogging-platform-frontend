@@ -10,7 +10,8 @@ import {
     POST_SAVE,
     VIEW_POST,
     APPLICATION_LOADED,
-    SAVE_COMMENT
+    SAVE_COMMENT,
+    COMMENT_ADDED
 } from "../actions";
 
 const history = createHashHistory();
@@ -61,7 +62,8 @@ function* savePost(action) {
 
 function* saveComment(action) {
     try {
-        yield call(Api.saveComment, action.data);
+        const savedComment = yield call(Api.saveComment, action.data);
+        yield put({type: COMMENT_ADDED, data: savedComment});
     } catch (e) {
         yield put({type: ERROR, data: e.message});
     }
