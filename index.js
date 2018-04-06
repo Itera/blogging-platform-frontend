@@ -18,6 +18,7 @@ import Title from "./src/components/title";
 import Main from "./src/containers/main";
 import AddPost from "./src/containers/add-post";
 import ViewPost from "./src/containers/view-post";
+import Admin from "./src/containers/admin";
 import Menu from './src/containers/menu';
 import Error from "./src/containers/error";
 import {APPLICATION_LOADED} from "./src/actions";
@@ -43,6 +44,7 @@ ReactDOM.render(
                     <Route exact path="/" component={Main}/>
                     <Route exact path="/view-post/:id" component={ViewPost}/>
                     <Route exact path="/add-post" component={AddPost}/>
+                    <Route exact path="/admin" component={Admin}/>
                 </div>
             </div>
         </Router>

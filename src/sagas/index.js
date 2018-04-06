@@ -16,15 +16,17 @@ import {
 
 const history = createHashHistory();
 
+const fetchPostsSaga = function* fetchPosts() {
+    try {
+        const posts = yield call(Api.fetchPosts);
+        yield put({type: RELOAD_POSTS, data: {name: 'posts', payload: posts}});
+    } catch (e) {
+        yield put({type: ERROR, data: e.message});
+    }
+};
 const routes = {
-    '/': function* fetchMainPageData() {
-        try {
-            const posts = yield call(Api.fetchPosts);
-            yield put({type: RELOAD_POSTS, data: {name: 'posts', payload: posts}});
-        } catch (e) {
-            yield put({type: ERROR, data: e.message});
-        }
-    },
+    '/': fetchPostsSaga,
+    '/admin': fetchPostsSaga,
     '/view-post/:id': function* viewPostSaga({id}) {
         try {
             const [post, comments] = yield all([
