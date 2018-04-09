@@ -34,6 +34,15 @@ function fetchCategories() {
     return fetchFromBackend('/category');
 }
 
+function fetchPostsByCategory(id) {
+    return fetchFromBackend(`/post/findByCategory?category=${id}`)
+}
+
+function fetchPostsByAuthor(id) {
+    return fetchFromBackend(`/post/findByAuthor?author=${id}`)
+}
+
+
 function postToBackend(endpoint, data) {
     return fetch(backendURL + endpoint, {
         'mode': 'cors',
@@ -61,6 +70,8 @@ export default {
     fetchAuthors,
     fetchCategories,
     fetchPosts,
+    fetchPostsByCategory,
+    fetchPostsByAuthor,
     fetchPost,
     fetchCommentsForPost,
     savePost,

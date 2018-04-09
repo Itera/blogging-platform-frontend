@@ -16,6 +16,12 @@ function findPost(posts, id) {
 
 app.get('/', (req, res) => res.json(swagger));
 app.get('/post', (req, res) => res.json(data.fakePosts));
+app.get('/post/findByCategory', (req, res) => res.json(data.fakePosts.filter(post => {
+    return post.categories.map(category => category.id).includes(Number.parseInt(req.query.category));
+})));
+app.get('/post/findByAuthor', (req, res) => res.json(data.fakePosts.filter(post => {
+    return post.author.id === Number.parseInt(req.query.author);
+})));
 app.get('/post/:id', (req, res) => res.json(findPost(data.fakePosts, req.params.id)));
 app.get('/post/', (req, res) => res.json(data.fakePosts));
 app.post('/post', (req, res) => res.json(req.body));

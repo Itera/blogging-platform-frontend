@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {Post} from '../model';
 
 const posts = ({posts}) => {
-    return posts ? posts.map(post => (
+    return posts && posts.length !== 0 ? posts.map(post => (
         <div key={post.id} className="post">
             <h2>{post.title}</h2>
             <p>

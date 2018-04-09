@@ -89,11 +89,11 @@ paths:
       parameters:
       - name: "author"
         in: "query"
-        description: "Author names that need to be considered for filter"
+        description: "Author IDs that need to be considered for filter"
         required: true
         type: "array"
         items:
-          type: "string"
+          type: "integer"
         collectionFormat: "multi"
       responses:
         200:
@@ -116,11 +116,11 @@ paths:
       parameters:
       - name: "categories"
         in: "query"
-        description: "Categories to filter by"
+        description: "Category IDs to filter by"
         required: true
         type: "array"
         items:
-          type: "string"
+          type: "integer"
         collectionFormat: "multi"
       responses:
         200:

@@ -8,7 +8,7 @@ const Categories = ({categories}) => (
         <h3>📚&nbsp;Category</h3>
         <div className="categories">
             {categories && categories.map(category => <div key={category.id} className="category">
-                {category.name}
+                <Link to={`/view-category/${category.id}`}>{category.name}</Link>
             </div>)}
         </div>
     </div>);
@@ -22,7 +22,7 @@ const Authors = ({authors}) => (
         <h3>🤷&nbsp;Author</h3>
         <div className="authors">
             {authors && authors.map(author => <div key={author.id} className="author">
-                {author.firstName + ' ' + author.lastName}
+                <Link to={`/view-author/${author.id}`}>{author.firstName + ' ' + author.lastName}</Link>
             </div>)}
         </div>
     </div>);

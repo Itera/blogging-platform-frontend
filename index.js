@@ -42,6 +42,8 @@ ReactDOM.render(
                 <div className="page row">
                     <Menu {...store}/>
                     <Route exact path="/" component={Main}/>
+                    <Route exact path="/view-category/:id" component={Main}/>
+                    <Route exact path="/view-author/:id" component={Main}/>
                     <Route exact path="/view-post/:id" component={ViewPost}/>
                     <Route exact path="/add-post" component={AddPost}/>
                     <Route exact path="/admin" component={Admin}/>

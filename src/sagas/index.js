@@ -16,6 +16,24 @@ import {
 
 const history = createHashHistory();
 
+const fetchPostsByCategorySaga = function* fetchPostsByCategory({id}) {
+    try {
+        const posts = yield call(Api.fetchPostsByCategory, id);
+        yield put({type: RELOAD_POSTS, data: {name: 'posts', payload: posts}});
+    } catch (e) {
+        yield put({type: ERROR, data: e.message});
+    }
+};
+
+const fetchPostsByAuthorSaga = function* fetchPostsByAuthor({id}) {
+    try {
+        const posts = yield call(Api.fetchPostsByAuthor, id);
+        yield put({type: RELOAD_POSTS, data: {name: 'posts', payload: posts}});
+    } catch (e) {
+        yield put({type: ERROR, data: e.message});
+    }
+};
+
 const fetchPostsSaga = function* fetchPosts() {
     try {
         const posts = yield call(Api.fetchPosts);
@@ -27,6 +45,8 @@ const fetchPostsSaga = function* fetchPosts() {
 const routes = {
     '/': fetchPostsSaga,
     '/admin': fetchPostsSaga,
+    '/view-category/:id': fetchPostsByCategorySaga,
+    '/view-author/:id': fetchPostsByAuthorSaga,
     '/view-post/:id': function* viewPostSaga({id}) {
         try {
             const [post, comments] = yield all([
