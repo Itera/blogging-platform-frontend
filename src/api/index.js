@@ -42,6 +42,31 @@ function fetchPostsByAuthor(id) {
     return fetchFromBackend(`/post/findByAuthor?author=${id}`)
 }
 
+function deleteFromBackend(endpoint) {
+    return fetch(backendURL + endpoint, {
+        'mode': 'cors',
+        'method': 'delete',
+        'headers': {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+        .catch(error => {
+            throw new Error("Unable to delete from backend due to error: " + error);
+        });
+}
+
+function deleteAuthor(id) {
+    return deleteFromBackend(`/author/${id}`);
+}
+
+function deleteCategory(id) {
+    return deleteFromBackend(`/category/${id}`);
+}
+
+function deletePost(id) {
+    return deleteFromBackend(`/post/${id}`);
+}
 
 function postToBackend(endpoint, data) {
     return fetch(backendURL + endpoint, {
@@ -75,5 +100,8 @@ export default {
     fetchPost,
     fetchCommentsForPost,
     savePost,
-    saveComment
+    saveComment,
+    deleteAuthor,
+    deleteCategory,
+    deletePost
 };

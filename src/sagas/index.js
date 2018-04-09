@@ -11,7 +11,10 @@ import {
     VIEW_POST,
     APPLICATION_LOADED,
     SAVE_COMMENT,
-    COMMENT_ADDED
+    COMMENT_ADDED,
+    DELETE_AUTHOR,
+    DELETE_CATEGORY,
+    DELETE_POST
 } from "../actions";
 
 const history = createHashHistory();
@@ -91,10 +94,39 @@ function* saveComment(action) {
     }
 }
 
+function* deleteItem(action) {
+    try {
+        switch (action.type) {
+            case DELETE_AUTHOR: {
+                yield call(Api.deleteAuthor, action.data);
+                yield call(fetchMainPageData);
+                break;
+            }
+            case DELETE_CATEGORY: {
+                yield call(Api.deleteCategory, action.data);
+                yield call(fetchMainPageData);
+                break;
+            }
+            case DELETE_POST: {
+                yield call(Api.deletePost, action.data);
+                yield call(fetchPostsSaga);
+                break;
+            }
+            default:
+                yield put({type: ERROR, data: `Deletion not implemented for ${action.type}`});
+        }
+    } catch (e) {
+        yield put({type: ERROR, data: e.message});
+    }
+}
+
 function* mainSaga() {
     yield takeEvery(POST_SAVE, savePost);
     yield takeEvery(SAVE_COMMENT, saveComment);
     yield takeEvery(APPLICATION_LOADED, fetchMainPageData);
+    yield takeEvery(DELETE_CATEGORY, deleteItem);
+    yield takeEvery(DELETE_AUTHOR, deleteItem);
+    yield takeEvery(DELETE_POST, deleteItem);
     yield fork(router, history, routes);
 }
 
