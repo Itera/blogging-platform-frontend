@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "mockServer": "node src/test-data/mock-server.js",
-    "build": "webpack index.js target/build.js",
+    "build": "webpack -p --config webpack.config.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -43,9 +43,11 @@
     "file-loader": "^1.1.11",
     "regenerator-runtime": "^0.11.1",
     "style-loader": "^0.20.1",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-dev-server": "^2.11.2",
+    "webpack-merge": "^4.1.2"
   },
   "dependencies": {
     "bootstrap": "^4.0.0",

@@ -12,11 +12,12 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules)/,
+                exclude: /(node_modules|target)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: ['babel-preset-env', 'react'],
+                        compact: false,
                         plugins: [
                             require('babel-plugin-transform-object-rest-spread'),
                             "add-react-displayname"
@@ -26,7 +27,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|target)/,
                 use: ['eslint-loader']
             },
             {
