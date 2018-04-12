@@ -29,6 +29,7 @@ app.get('/post/findByAuthor', (req, res) => res.json(inMemoryPosts.filter(post =
 app.get('/post/:id', (req, res) => res.json(findPost(inMemoryPosts, req.params.id)));
 app.get('/post/', (req, res) => res.json(inMemoryPosts));
 app.post('/post', (req, res) => res.json(req.body));
+app.put('/post/:id', (req, res) => res.json(req.body));
 app.get('/author', (req, res) => res.json(inMemoryAuthors));
 app.get('/category', (req, res) => res.json(inMemoryCategories));
 app.get('/comment/post/:postId', (req, res) => res.json(

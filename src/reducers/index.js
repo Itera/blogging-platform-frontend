@@ -3,11 +3,11 @@ import {
     CATEGORY_ADDED_TO_POST,
     COMMENT_ADDED,
     ERROR,
-    POST_FORM_VALUE_CHANGED,
+    ADD_POST_FORM_VALUE_CHANGED,
     RELOAD_AUTHORS,
     RELOAD_CATEGORIES,
     RELOAD_POSTS,
-    VIEW_POST
+    VIEW_POST, EDIT_POST, EDIT_POST_FORM_VALUE_CHANGED
 } from "../actions";
 
 const defaultState = {
@@ -15,6 +15,14 @@ const defaultState = {
     authors: [],
     posts: [],
     addPost: {
+        author: '',
+        title: '',
+        categories: '',
+        perex: '',
+        content: ''
+    },
+    editPost: {
+        id: null,
         author: '',
         title: '',
         categories: '',
@@ -53,11 +61,27 @@ export default (state = defaultState, action) => {
                 }
             }
         }
-        case POST_FORM_VALUE_CHANGED: {
+        case EDIT_POST: {
+            return {
+                ...state,
+                editPost: {
+                    ...action.data,
+                    categories: action.data.categories.map(c => c.name).reduce((a, b) => a + ', ' + b),
+                    author: action.data.author.firstName + ' ' + action.data.author.lastName
+                }
+            };
+        }
+        case ADD_POST_FORM_VALUE_CHANGED: {
             if (action.data.name === 'existingAuthor') {
                 return {...state, addPost: {...state.addPost, author: action.data.value}}
             }
             return {...state, addPost: {...state.addPost, [action.data.name]: action.data.value}};
+        }
+        case EDIT_POST_FORM_VALUE_CHANGED: {
+            if (action.data.name === 'existingAuthor') {
+                return {...state, editPost: {...state.editPost, author: action.data.value}}
+            }
+            return {...state, editPost: {...state.editPost, [action.data.name]: action.data.value}};
         }
         case ADD_COMMENT_FORM_VALUE_CHANGED: {
             return {

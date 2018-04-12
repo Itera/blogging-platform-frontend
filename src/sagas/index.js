@@ -9,12 +9,13 @@ import {
     RELOAD_CATEGORIES,
     POST_SAVE,
     VIEW_POST,
+    EDIT_POST,
     APPLICATION_LOADED,
     SAVE_COMMENT,
     COMMENT_ADDED,
     DELETE_AUTHOR,
     DELETE_CATEGORY,
-    DELETE_POST
+    DELETE_POST, POST_UPDATE
 } from "../actions";
 
 const history = createHashHistory();
@@ -60,6 +61,14 @@ const routes = {
         } catch (e) {
             yield put({type: ERROR, data: e.message});
         }
+    },
+    '/edit-post/:id': function* editPostSaga({id}) {
+        try {
+            const post = yield call(Api.fetchPost, id);
+            yield put({type: EDIT_POST, data: post});
+        } catch (e) {
+            yield put({type: ERROR, data: e.message});
+        }
     }
 };
 
@@ -79,6 +88,15 @@ function* fetchMainPageData() {
 function* savePost(action) {
     try {
         yield call(Api.savePost, action.data);
+        history.push('/');
+    } catch (e) {
+        yield put({type: ERROR, data: e.message});
+    }
+}
+
+function* updatePost(action) {
+    try {
+        yield call(Api.updatePost, action.data);
         history.push('/');
     } catch (e) {
         yield put({type: ERROR, data: e.message});
@@ -122,6 +140,7 @@ function* deleteItem(action) {
 
 function* mainSaga() {
     yield takeEvery(POST_SAVE, savePost);
+    yield takeEvery(POST_UPDATE, updatePost);
     yield takeEvery(SAVE_COMMENT, saveComment);
     yield takeEvery(APPLICATION_LOADED, fetchMainPageData);
     yield takeEvery(DELETE_CATEGORY, deleteItem);

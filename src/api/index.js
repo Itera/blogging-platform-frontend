@@ -91,6 +91,25 @@ function saveComment(comment) {
     return postToBackend(`/comment/post/${comment.postId}`, comment);
 }
 
+function putToBackend(endpoint, data) {
+    return fetch(backendURL + endpoint, {
+        'mode': 'cors',
+        'method': 'put',
+        'body': JSON.stringify(data),
+        'headers': {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+        .catch(error => {
+            new Error("Unable to put to backend due to error: " + error);
+        });
+}
+
+function updatePost(post) {
+    return putToBackend(`/post/${post.id}`, post);
+}
+
 export default {
     fetchAuthors,
     fetchCategories,
@@ -103,5 +122,6 @@ export default {
     saveComment,
     deleteAuthor,
     deleteCategory,
-    deletePost
+    deletePost,
+    updatePost
 };
