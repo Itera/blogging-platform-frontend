@@ -47,7 +47,7 @@ const AddPost = ({categories, authors, addPost, onCategoryAdded, onPostSave, onV
             <div className="row">
                 <div className="col-6">
                     <button type="button" className="btn btn-outline-primary btn-block"
-                            onClick={() => onPostSave(addPost)}>
+                            onClick={() => onPostSave(addPost, authors, categories)}>
                         Save post
                     </button>
                 </div>

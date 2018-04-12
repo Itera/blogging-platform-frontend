@@ -6,10 +6,11 @@ import AddPost from '../components/add-post';
 import {Post} from '../model';
 
 const onCategoryAdded = (category) => ({type: CATEGORY_ADDED_TO_POST, data: category});
-const onPostSave = (post) => {
+const onPostSave = (post, authors, categories) => {
     let postValidationErrors = Post.validate(post);
+    console.log(post);
     if (postValidationErrors.length === 0) {
-        return {type: POST_SAVE, data: post};
+        return {type: POST_SAVE, data: Post.transformForBackend(post, authors, categories)};
     }
     return {
         type: ERROR,
@@ -32,7 +33,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCategoryAdded: (category) => dispatch(onCategoryAdded(category)),
-        onPostSave: (post) => dispatch(onPostSave(post)),
+        onPostSave: (post, authors, categories) => dispatch(onPostSave(post, authors, categories)),
         onValueChanged: (event) => dispatch(onValueChanged(event))
     };
 };

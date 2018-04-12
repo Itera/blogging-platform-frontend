@@ -33,6 +33,18 @@ export const Post = PropTypes.shape({
     category: PropTypes.arrayOf(Category)
 });
 
+Post.transformForBackend = (postFromForm, authors, categories) => {
+    return {
+        ...postFromForm,
+        author: authors.find(author => postFromForm.author === author.firstName + ' ' + author.lastName),
+        categories: postFromForm.categories.split(',').map(categoryFromPost =>
+            categories.find(category => category.name === categoryFromPost.trim()) || {
+                name: categoryFromPost.trim()
+            }
+        )
+    };
+};
+
 Post.validate = (post) => {
     let validationErrors = [];
     if (post.title === "") {
