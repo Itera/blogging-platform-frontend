@@ -7,10 +7,14 @@ import {Post} from '../model';
 
 const onCategoryAdded = (category) => ({type: CATEGORY_ADDED_TO_POST, data: category});
 const onPostSave = (post) => {
-    if (Post.validate(post)) {
+    let postValidationErrors = Post.validate(post);
+    if (postValidationErrors.length === 0) {
         return {type: POST_SAVE, data: post};
     }
-    return {type: ERROR, data: "Error in field validation of Post."}
+    return {
+        type: ERROR,
+        data: {type: 'Validation', message: `Error in field validation of Post. Errors: ${postValidationErrors}`}
+    }
 };
 const onValueChanged = (event) => ({
     type: ADD_POST_FORM_VALUE_CHANGED,

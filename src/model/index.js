@@ -34,5 +34,18 @@ export const Post = PropTypes.shape({
 });
 
 Post.validate = (post) => {
-    return !(post.title === "" || post.perex === "" || post.content === "" || post.author === "0");
+    let validationErrors = [];
+    if (post.title === "") {
+        validationErrors.push("Title of post must not be empty");
+    }
+    if (post.perex === "") {
+        validationErrors.push("Perex must not be empty");
+    }
+    if (post.content === "") {
+        validationErrors.push("Content must not be empty");
+    }
+    if (post.author === "0") {
+        validationErrors.push("Author must be selected");
+    }
+    return validationErrors;
 };
