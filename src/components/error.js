@@ -19,7 +19,7 @@ const Error = ({error}) => {
 };
 
 Error.propTypes = {
-    error: PropTypes.oneOfType(PropTypes.string, PropTypes.object)
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 export default Error;
