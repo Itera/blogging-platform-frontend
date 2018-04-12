@@ -134,11 +134,11 @@
           {
             "name": "author",
             "in": "query",
-            "description": "Author names that need to be considered for filter",
+            "description": "Author IDs that need to be considered for filter",
             "required": true,
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
@@ -174,11 +174,11 @@
           {
             "name": "categories",
             "in": "query",
-            "description": "Categories to filter by",
+            "description": "Category IDs to filter by",
             "required": true,
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "integer"
             },
             "collectionFormat": "multi"
           }
@@ -604,11 +604,22 @@
           "type": "string",
           "format": "date-time"
         },
+        "perex": {
+          "type": "string",
+          "description": "Description of post that will be displayed in list of posts"
+        },
+        "content": {
+          "type": "string",
+          "description": "Actual content of the post"
+        },
         "author": {
           "$ref": "#/definitions/Author"
         },
-        "category": {
-          "$ref": "#/definitions/Category"
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Category"
+          }
         }
       }
     },
@@ -667,6 +678,9 @@
         },
         "content": {
           "type": "string"
+        },
+        "postId": {
+          "type": "integer"
         }
       }
     }
