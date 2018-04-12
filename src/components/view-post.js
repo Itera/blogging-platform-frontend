@@ -19,9 +19,7 @@ const ViewPost = ({viewPost, onValueChanged, onCommentSaved}) => {
         <p>{viewPost.content}</p>
         <Link to="/">Back</Link>
         <CommentList comments={viewPost.comments}/>
-        <AddComment addComment={viewPost.addComment}
-                    onValueChanged={onValueChanged}
-                    onCommentSaved={onCommentSaved}/>
+        <AddComment addComment={viewPost.addComment} onValueChanged={onValueChanged} onCommentSaved={onCommentSaved}/>
     </div>
 };
 

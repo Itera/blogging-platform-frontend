@@ -19,7 +19,7 @@ Categories.propTypes = {
 
 const Authors = ({authors}) => (
     <div>
-        <h3>🤷&nbsp;Author</h3>
+        <h3>👨&nbsp;Author</h3>
         <div className="authors">
             {authors && authors.map(author => <div key={author.id} className="author">
                 <Link to={`/view-author/${author.id}`}>{author.firstName + ' ' + author.lastName}</Link>
