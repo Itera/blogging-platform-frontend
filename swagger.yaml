@@ -53,30 +53,6 @@ paths:
       responses:
         405:
           description: "Invalid input"
-    put:
-      tags:
-      - "post"
-      summary: "Update an existing post"
-      description: ""
-      operationId: "updatePost"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Post object that needs to be added to the store"
-        required: true
-        schema:
-          $ref: "#/definitions/Post"
-      responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Post not found"
-        405:
-          description: "Validation exception"
   /post/findByAuthor:
     get:
       tags:
@@ -156,6 +132,35 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Post not found"
+    put:
+      tags:
+      - "post"
+      summary: "Update an existing post"
+      description: ""
+      operationId: "updatePost"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "authorId"
+        in: "path"
+        description: "The name that needs to be fetched."
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Post object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Post"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Post not found"
+        405:
+          description: "Validation exception"
     delete:
       tags:
       - "post"
@@ -165,10 +170,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "api_key"
-        in: "header"
-        required: false
-        type: "string"
       - name: "postId"
         in: "path"
         description: "Post id to delete"
@@ -176,6 +177,8 @@ paths:
         type: "integer"
         format: "int64"
       responses:
+        202:
+          description: "Deleted successfully"
         400:
           description: "Invalid ID supplied"
         404:
@@ -276,6 +279,8 @@ paths:
         minimum: 1.0
         format: "int64"
       responses:
+        202:
+          description: "Deleted successfully"
         400:
           description: "Invalid ID supplied"
         404:
@@ -327,7 +332,7 @@ paths:
       responses:
         default:
           description: "successful operation"
-  /author/{username}:
+  /author/{authorId}:
     get:
       tags:
       - "author"
@@ -337,7 +342,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "username"
+      - name: "authorId"
         in: "path"
         description: "The name that needs to be fetched."
         required: true
@@ -359,7 +364,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "username"
+      - name: "authorId"
         in: "path"
         description: "name that need to be updated"
         required: true
@@ -383,7 +388,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "username"
+      - name: "authorId"
         in: "path"
         description: "The name that needs to be deleted"
         required: true
