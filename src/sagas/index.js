@@ -87,7 +87,7 @@ function* fetchMainPageData() {
 
 function* savePost(action) {
     try {
-        yield call(Api.savePost, action.data);
+        yield call(Api.savePost, {...action.data, date: new Date()});
         history.push('/');
     } catch (e) {
         yield put({type: ERROR, data: e.message});
@@ -105,7 +105,7 @@ function* updatePost(action) {
 
 function* saveComment(action) {
     try {
-        const savedComment = yield call(Api.saveComment, action.data);
+        const savedComment = yield call(Api.saveComment, {...action.data, date: new Date()});
         yield put({type: COMMENT_ADDED, data: savedComment});
     } catch (e) {
         yield put({type: ERROR, data: e.message});
