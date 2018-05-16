@@ -61,7 +61,6 @@ function deleteFromBackend(endpoint) {
             'Content-Type': 'application/json'
         }
     }).then(handleErrors)
-        .then(response => response.json())
         .catch(error => {
             throw new Error("Unable to delete from backend due to error: " + error);
         });
