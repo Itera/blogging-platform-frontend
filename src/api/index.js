@@ -1,5 +1,14 @@
 const backendURL = 'http://localhost:8080';
 
+function handleErrors(response) {
+    if (!response.ok) {
+        return response.json().then((error) => {
+            throw new Error(error.message)
+        });
+    }
+    return response;
+}
+
 function fetchFromBackend(endpoint) {
     return fetch(backendURL + endpoint, {
         'mode': 'cors',
@@ -8,7 +17,8 @@ function fetchFromBackend(endpoint) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(response => response.json())
+    }).then(handleErrors)
+        .then(response => response.json())
         .catch(error => {
             throw new Error("Unable to fetch from backend due to error: " + error);
         });
@@ -50,7 +60,8 @@ function deleteFromBackend(endpoint) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(response => response.json())
+    }).then(handleErrors)
+        .then(response => response.json())
         .catch(error => {
             throw new Error("Unable to delete from backend due to error: " + error);
         });
@@ -77,9 +88,10 @@ function postToBackend(endpoint, data) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(response => response.json())
+    }).then(handleErrors)
+        .then(response => response.json())
         .catch(error => {
-            new Error("Unable to save to backend due to error: " + error);
+            throw new Error("Unable to save to backend due to error: " + error);
         });
 }
 
@@ -102,7 +114,7 @@ function putToBackend(endpoint, data) {
         }
     }).then(response => response.json())
         .catch(error => {
-            new Error("Unable to put to backend due to error: " + error);
+            throw new Error("Unable to put to backend due to error: " + error);
         });
 }
 
