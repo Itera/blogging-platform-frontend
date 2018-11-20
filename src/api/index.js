@@ -25,31 +25,31 @@ function fetchFromBackend(endpoint) {
 }
 
 function fetchPosts() {
-    return fetchFromBackend('/post');
+    return fetchFromBackend('/posts');
 }
 
 function fetchPost(id) {
-    return fetchFromBackend(`/post/${id}`);
+    return fetchFromBackend(`/posts/${id}`);
 }
 
 function fetchCommentsForPost(postId) {
-    return fetchFromBackend(`/comment/post/${postId}`);
+    return fetchFromBackend(`/comments/post/${postId}`);
 }
 
 function fetchAuthors() {
-    return fetchFromBackend('/author');
+    return fetchFromBackend('/authors');
 }
 
 function fetchCategories() {
-    return fetchFromBackend('/category');
+    return fetchFromBackend('/categorys');
 }
 
 function fetchPostsByCategory(id) {
-    return fetchFromBackend(`/post/findByCategory?category=${id}`)
+    return fetchFromBackend(`/posts/findByCategory?category=${id}`)
 }
 
 function fetchPostsByAuthor(id) {
-    return fetchFromBackend(`/post/findByAuthor?author=${id}`)
+    return fetchFromBackend(`/posts/findByAuthor?author=${id}`)
 }
 
 function deleteFromBackend(endpoint) {
@@ -67,15 +67,15 @@ function deleteFromBackend(endpoint) {
 }
 
 function deleteAuthor(id) {
-    return deleteFromBackend(`/author/${id}`);
+    return deleteFromBackend(`/authors/${id}`);
 }
 
 function deleteCategory(id) {
-    return deleteFromBackend(`/category/${id}`);
+    return deleteFromBackend(`/categories/${id}`);
 }
 
 function deletePost(id) {
-    return deleteFromBackend(`/post/${id}`);
+    return deleteFromBackend(`/posts/${id}`);
 }
 
 function postToBackend(endpoint, data) {
@@ -95,11 +95,11 @@ function postToBackend(endpoint, data) {
 }
 
 function savePost(post) {
-    return postToBackend('/post', post)
+    return postToBackend('/posts', post)
 }
 
 function saveComment(comment) {
-    return postToBackend(`/comment/post/${comment.postId}`, comment);
+    return postToBackend(`/comments/post/${comment.postId}`, comment);
 }
 
 function putToBackend(endpoint, data) {
@@ -118,7 +118,7 @@ function putToBackend(endpoint, data) {
 }
 
 function updatePost(post) {
-    return putToBackend(`/post/${post.id}`, post);
+    return putToBackend(`/posts/${post.id}`, post);
 }
 
 export default {

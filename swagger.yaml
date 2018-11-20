@@ -5,7 +5,7 @@ info:
   title: "Blogging Platform Backend"
   contact:
     email: "pavol.rajzak@itera.no"
-host: "url-to-be-defined"
+host: "friends.blog.com"
 basePath: "/v1"
 tags:
 - name: "post"
@@ -19,7 +19,7 @@ tags:
 schemes:
 - "http"
 paths:
-  /post:
+  /posts:
     get:
       tags:
       - "post"
@@ -53,7 +53,7 @@ paths:
       responses:
         405:
           description: "Invalid input"
-  /post/findByAuthor:
+  /posts/findByAuthor:
     get:
       tags:
       - "post"
@@ -80,7 +80,7 @@ paths:
               $ref: "#/definitions/Post"
         400:
           description: "Invalid author name"
-  /post/findByCategory:
+  /posts/findByCategory:
     get:
       tags:
       - "post"
@@ -107,7 +107,7 @@ paths:
               $ref: "#/definitions/Post"
         400:
           description: "Invalid category name"
-  /post/{postId}:
+  /posts/{postId}:
     get:
       tags:
       - "post"
@@ -183,7 +183,7 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Post not found"
-  /comment/post/{postId}:
+  /comments/post/{postId}:
     get:
       tags:
       - "comment"
@@ -237,7 +237,7 @@ paths:
             $ref: "#/definitions/Comment"
         400:
           description: "Invalid comment for post"
-  /comment/{commentId}:
+  /comments/{commentId}:
     get:
       tags:
       - "comment"
@@ -285,7 +285,7 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Comment not found"
-  /category:
+  /categories:
     get:
       tags:
       - "category"
@@ -300,7 +300,7 @@ paths:
             $ref: "#/definitions/Category"
         404:
           description: "No categories found"
-  /author:
+  /authors:
     get:
       tags:
       - "author"
@@ -332,7 +332,7 @@ paths:
       responses:
         default:
           description: "successful operation"
-  /author/{authorId}:
+  /authors/{authorId}:
     get:
       tags:
       - "author"
