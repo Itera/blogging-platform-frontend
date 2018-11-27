@@ -4,7 +4,7 @@ Frontend application for backend that will be developed during Itera Academy cou
 
 ## How to build the frontend
 
-Run `npm install` and then `npm build`. Output will be visible in the `target` folder. Just copy the files on any webserver.
+Run `npm install` and then `npm run build`. Output will be visible in the `target` folder. Just copy the files on any webserver.
 
 ## How to develop frontend
 
